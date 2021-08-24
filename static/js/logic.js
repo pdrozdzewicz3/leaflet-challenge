@@ -14,7 +14,6 @@ L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
   id: "mapbox/satellite-v9",
   accessToken: API_KEY
 }).addTo(leafletMap);
-
 var geojson;
 
 // Data
@@ -57,7 +56,7 @@ for (let i = 0; i < numQuake ; i++) {
 // Legend
 var legend = L.control({position: 'bottomleft'});
 
-// gets color def
+// Gets color def
 function colorDef(d) {
   return d > 90 ? "rgb(255, 50, 50)" : 
   d > 70 ? "rgb(252, 160, 90)" :
@@ -79,7 +78,7 @@ legend.onAdd = function () {
 }
   return div;
 };
-// add legend onto map
+// Add legend onto map
 legend.addTo(leafletMap);
 
 });

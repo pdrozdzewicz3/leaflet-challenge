@@ -14,8 +14,8 @@ html {
   color: #555;
   background: white;
   padding: 6px 6px;
- font: 12px Arial, Helvetica, sans-serif;    
-border-radius: 5px;
+ font: 12px Arial, Helvetica, sans-serif, bold;    
+border-radius: 6px;
 height: 100px;
 }
 .legend i {

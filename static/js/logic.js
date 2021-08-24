@@ -19,21 +19,21 @@ var geojson;
 
 // Data
 d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson").then(function(data) {
-var earthquakes = data.features;
-var numEarthquake = earthquakes.length;
+var quakes = data.features;
+var numQuake = quakes.length;
 
 // Go through earthquake data
-for (let i = 0; i < numEarthquake ; i++) {
+for (let i = 0; i < numQuake ; i++) {
   var color = "";
-  if  (earthquakes[i].geometry.coordinates[2] < 10) {
+  if  (quakes[i].geometry.coordinates[2] < 10) {
     color = "rgb(140, 245, 0)";
-  } else if (earthquakes[i].geometry.coordinates[2] < 30) {
+  } else if (quakes[i].geometry.coordinates[2] < 30) {
     color = "rgb(200, 240, 0)";
-  } else if (earthquakes[i].geometry.coordinates[2] < 50) {
+  } else if (quakes[i].geometry.coordinates[2] < 50) {
     color = "rgb(220, 220, 20)";
-  } else if (earthquakes[i].geometry.coordinates[2]< 70) {
+  } else if (quakes[i].geometry.coordinates[2]< 70) {
     color = "rgb(250, 180, 40)";
-  } else if (earthquakes[i].geometry.coordinates[2] < 90) {
+  } else if (quakes[i].geometry.coordinates[2] < 90) {
     color = "rgb(252, 160, 90)";
   } else {
     color = "rgb(255, 50, 50)";
@@ -41,15 +41,15 @@ for (let i = 0; i < numEarthquake ; i++) {
 
 
   // Markers
-  var marker = L.circleMarker([earthquakes[i].geometry.coordinates[1], earthquakes[i].geometry.coordinates[0]], {
+  var marker = L.circleMarker([quakes[i].geometry.coordinates[1], quakes[i].geometry.coordinates[0]], {
     color: "black",
     weight: .7,
     fillOpacity: 1,
     fillColor: color,
-    radius: earthquakes[i].properties.mag * 2.2
+    radius: quakes[i].properties.mag * 2.2
   })
 
-  .bindPopup("<h2>" + earthquakes[i].properties.place + "</h2> <hr>" + "<h3> Magnitude: " + earthquakes[i].properties.mag + "</h3>" + "<h3> Depth: " + earthquakes[i].geometry.coordinates[2] + "</h3>")
+  .bindPopup("<h2>" + quakes[i].properties.place + "</h2> <hr>" + "<h3> Magnitude: " + quakes[i].properties.mag + "</h3>" + "<h3> Depth: " + quakes[i].geometry.coordinates[2] + "</h3>")
   .addTo(leafletMap);
 }
 
